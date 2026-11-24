@@ -319,6 +319,7 @@ tbody tr:last-child { color: var(--accent-dark); background: var(--table-highlig
 
 @media (max-width: 480px) {
   .video-grid { grid-template-columns: 1fr; }
+  .penetration-table :is(th, td) { padding-inline: 6px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

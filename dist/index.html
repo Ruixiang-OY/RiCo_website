@@ -236,16 +236,17 @@
           <p class="lede">We subtract the ground-truth penetration-time ratio and mean penetration depth from their predicted values to obtain ΔPTR and ΔMPD, respectively.</p>
         </div>
         <div class="results-panel">
-          <table class="penetration-table" aria-label="MOVi-B penetration results">
+          <table class="penetration-table" aria-label="MOVi-B penetration comparison">
             <thead>
-              <tr><th scope="col">RiCo setting</th><th scope="col">ΔPTR</th><th scope="col">ΔMPD</th></tr>
+              <tr><th scope="col">Model</th><th scope="col">ΔPTR</th><th scope="col">ΔMPD</th></tr>
             </thead>
             <tbody>
-              <tr><th scope="row">RiCo · 1,024 points</th><td>11.0 <span>pp</span></td><td>2.22 <span>mm</span></td></tr>
-              <tr><th scope="row">RiCo · 512 points</th><td>23.4 pp</td><td>6.21 mm</td></tr>
-              <tr><th scope="row">Unsigned distance</th><td>23.6 pp</td><td>7.86 mm</td></tr>
+              <tr><th scope="row">RiCo</th><td>11.0<span>%</span></td><td>2.22 <span>mm</span></td></tr>
+              <tr><th scope="row">RigidFormer</th><td>39.6%</td><td>46.85 mm</td></tr>
+              <tr><th scope="row">HOPNet</th><td>42.7%</td><td>285.86 mm</td></tr>
             </tbody>
           </table>
+          <p class="table-note">RigidFormer was evaluated on 116 of 120 test sequences with matching object counts. RiCo and HOPNet were evaluated on all 120.</p>
         </div>
         <section class="results-panel distribution-panel" id="penetration-distribution" aria-labelledby="mpd-title">
           <div class="results-heading distribution-heading">
@@ -350,7 +351,7 @@
           <p class="table-note">Lower is better for both metrics. <a href="https://arxiv.org/html/2610.12333v1#S4">See all baselines and evaluation details</a></p>
         </div>
         <div class="result-notes">
-          <article><h3>Contact fidelity</h3><p><a href="#penetration">See the MOVi-B penetration results</a> for the effect of point-cloud resolution and signed distance on contact fidelity.</p></article>
+          <article><h3>Contact fidelity</h3><p><a href="#penetration">See the MOVi-B penetration results</a> for the three-model comparison and per-sequence distributions.</p></article>
           <article><h3>Scope</h3><p>RiCo models passive rigid bodies. The paper leaves deformable objects and actuated systems for future work.</p></article>
         </div>
       </div>
