@@ -233,23 +233,18 @@ h3 { font-size: clamp(1.18rem, 1.95vw, 1.48rem); line-height: 1.2; letter-spacin
 .experiment-image img { height: auto; aspect-ratio: 3 / 2; object-fit: contain; }
 .experiment-grid h3 { margin-top: 17px; }
 
-.video-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
-.video-card h3 { margin-bottom: 12px; }
-.video-card video, .video-placeholder {
+.movi-group + .movi-group { margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line); }
+.movi-group h3 { margin-bottom: 14px; }
+.video-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px 16px; }
+.video-card video {
   width: 100%;
   aspect-ratio: 16 / 9;
   border: 1px solid var(--line);
   border-radius: 13px;
+  background: #090a0d;
+  object-fit: contain;
 }
-.video-card video { background: #090a0d; object-fit: contain; }
-.video-placeholder {
-  display: grid;
-  place-items: center;
-  border-style: dashed;
-  background: var(--surface);
-  color: var(--muted);
-  font-size: .9375rem;
-}
+.video-card figcaption { margin-top: 7px; color: var(--muted); font-size: .875rem; }
 
 .results-panel { border-radius: 17px; padding: clamp(16px, 3vw, 34px); border: 1px solid var(--line); background: var(--surface); }
 .results-heading { display: flex; justify-content: space-between; align-items: center; gap: 10px 24px; }
@@ -291,6 +286,7 @@ tbody tr:last-child { color: var(--accent-dark); background: var(--table-highlig
   .nav { gap: 21px; }
   .stats div { padding-inline: 22px; }
   .method-grid article { padding: 17px; }
+  .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 660px) {
@@ -310,10 +306,14 @@ tbody tr:last-child { color: var(--accent-dark); background: var(--table-highlig
   .stats div, .stats div:first-child { padding: 14px 0; border: 0; }
   .stats div + div { border-top: 1px solid var(--line); }
   .stats .stat-value { font-size: 2.125rem; }
-  .method-grid, .experiment-grid, .video-grid, .result-notes { grid-template-columns: 1fr; }
+  .method-grid, .experiment-grid, .result-notes { grid-template-columns: 1fr; }
   .framework { padding: 10px; }
   .results-heading { flex-wrap: wrap; }
   td, th { padding: 10px 8px; }
+}
+
+@media (max-width: 480px) {
+  .video-grid { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
