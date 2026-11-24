@@ -95,19 +95,14 @@
       </figure>
     </section>
 
-    <section class="section experiments" id="experiments">
+    <section class="section penetration-section" id="penetration" aria-labelledby="penetration-title">
       <div class="page-width">
         <div class="section-heading">
-          <p class="eyebrow">Experiments</p>
-          <h2>Contact fidelity, scalability, and real-world transfer</h2>
+          <p class="eyebrow">Contact fidelity · MOVi-B</p>
+          <h2 id="penetration-title">Penetration results</h2>
+          <p class="lede">We subtract the ground-truth penetration-time ratio and mean penetration depth from their predicted values to obtain ΔPTR and ΔMPD, respectively.</p>
         </div>
-        <section class="penetration" id="penetration" aria-labelledby="penetration-title">
-          <div class="penetration-intro">
-            <p class="eyebrow">MOVi-B</p>
-            <h3 id="penetration-title">Penetration results</h3>
-            <p>ΔPTR measures the difference in penetration-time ratio. ΔMPD measures the difference in mean penetration depth. Both subtract the ground-truth statistic from the predicted statistic.</p>
-            <a href="https://arxiv.org/html/2610.12333v1#S4.SS3">Read the contact fidelity experiment</a>
-          </div>
+        <div class="results-panel">
           <table class="penetration-table" aria-label="MOVi-B penetration results">
             <thead>
               <tr><th scope="col">RiCo setting</th><th scope="col">ΔPTR</th><th scope="col">ΔMPD</th></tr>
@@ -118,7 +113,18 @@
               <tr><th scope="row">Unsigned distance</th><td>23.6 pp</td><td>7.86 mm</td></tr>
             </tbody>
           </table>
-        </section>
+          <p class="table-note"><a href="https://arxiv.org/html/2610.12333v1#S4.SS3">Read the contact fidelity experiment</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section experiments" id="experiments">
+      <div class="page-width">
+        <div class="section-heading">
+          <p class="eyebrow">Experiments</p>
+          <h2>Scaling up and transferring to real collisions</h2>
+          <p class="lede">The paper tests RiCo on larger simulated scenes and on multi-ball collisions recorded on a billiard table.</p>
+        </div>
         <div class="experiment-grid">
           <article>
             <a class="experiment-image" href="assets/scale.webp"><img src="assets/scale.webp" alt="Rollouts for large scenes containing spheres, spots and knots." width="1850" height="1400" loading="lazy"></a>
