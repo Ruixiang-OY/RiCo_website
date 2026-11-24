@@ -155,8 +155,8 @@ figcaption a { font-weight: 560; }
 .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding-block: 40px; }
 .stats div { display: grid; padding-inline: 34px; border-inline-start: 1px solid #d8deef; }
 .stats div:first-child { padding-inline-start: 0; border: 0; }
-.stats .stat-value { grid-row: 1; color: var(--accent); font-size: clamp(2.5rem, 4.6vw, 4.25rem); line-height: 1.07; letter-spacing: -.075em; font-weight: 650; }
-.stat-value span { margin-left: 3px; font-size: .59em; }
+.stats .stat-value { grid-row: 1; color: var(--accent); font-size: clamp(1.75rem, 4vw, 3.5rem); line-height: 1.07; letter-spacing: -.075em; font-weight: 650; white-space: nowrap; }
+.stat-value span { font-size: .59em; }
 .stats dt { margin: 8px 0 3px; font-size: 1rem; font-weight: 650; }
 .stats .stat-note { font-size: .875rem; color: var(--muted); line-height: 1.45; }
 
@@ -247,11 +247,9 @@ tbody tr:last-child { color: var(--accent-dark); background: #edf0ff; font-weigh
   .demo video { border-radius: 12px; }
   .findings { margin-top: 40px; }
   .stats { grid-template-columns: 1fr; padding-block: 12px; }
-  .stats div, .stats div:first-child { grid-template-columns: minmax(111px, 35%) 1fr; column-gap: 12px; align-items: center; padding: 14px 0; border: 0; }
+  .stats div, .stats div:first-child { padding: 14px 0; border: 0; }
   .stats div + div { border-top: 1px solid #d8deef; }
-  .stats .stat-value { grid-row: 1 / span 2; }
-  .stats dt { margin: 0; align-self: end; }
-  .stats .stat-note { align-self: start; }
+  .stats .stat-value { font-size: 2.25rem; }
   .method-grid, .experiment-grid, .result-notes { grid-template-columns: 1fr; }
   .framework { padding: 10px; }
   .results-heading { flex-wrap: wrap; }
