@@ -133,8 +133,7 @@ h1, h2, h3, p, figure, dl, dd { margin: 0; }
 sup { margin-left: 1px; color: var(--accent-dark); font-size: .68em; font-weight: 650; }
 .paper-actions { display: flex; justify-content: center; gap: 10px; margin: 22px 0 25px; }
 .abstract { max-width: 860px; margin: 0 auto 26px; border-block: 1px solid var(--line); text-align: left; }
-.abstract summary { width: 100%; padding: 13px 4px; color: var(--body); font-size: .9375rem; font-weight: 650; cursor: pointer; }
-.abstract summary::marker { color: var(--accent); }
+.abstract h2 { padding: 13px 4px 8px; color: var(--body); font-size: 1rem; font-weight: 650; letter-spacing: 0; line-height: 1.45; }
 .abstract p { padding: 0 4px; margin: 2px 0 15px; color: var(--body); line-height: 1.7; }
 .demo { max-width: 1040px; }
 .demo video {
@@ -157,7 +156,6 @@ sup { margin-left: 1px; color: var(--accent-dark); font-size: .68em; font-weight
   line-height: 1.55;
 }
 figcaption strong { color: var(--ink); font-weight: 650; }
-.caption-dot { padding-inline: 3px; }
 figcaption a { font-weight: 560; }
 
 .findings { margin-top: 60px; border-block: 1px solid #e5e9f5; background: var(--paper); }
