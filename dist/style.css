@@ -201,6 +201,35 @@ h3 { font-size: clamp(1.18rem, 1.95vw, 1.48rem); line-height: 1.2; letter-spacin
 .experiments { background: var(--dark); color: #f6f7ff; }
 .experiments .eyebrow { color: #acb9ff; }
 .experiments .lede, .experiment-grid p { color: #c1c9e3; }
+.penetration {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr);
+  align-items: center;
+  gap: clamp(20px, 3.4vw, 46px);
+  margin-bottom: 34px;
+  padding: clamp(18px, 3vw, 34px);
+  border: 1px solid #424c70;
+  border-radius: 17px;
+  background: #202845;
+}
+.penetration-intro h3 { font-size: clamp(1.45rem, 2.5vw, 2.125rem); }
+.penetration-intro p:not(.eyebrow) { margin: 12px 0; color: #c1c9e3; line-height: 1.65; }
+.penetration-intro a { display: inline-block; color: #c6d0ff; font-size: .875rem; font-weight: 560; }
+.penetration-intro a:hover { color: #fff; }
+.penetration-table { min-width: 0; color: #e4e9fd; }
+.penetration-table thead { color: #c1c9e3; background: transparent; }
+.penetration-table tbody tr { border-color: #424c70; }
+.penetration-table tbody tr:last-child { color: inherit; background: transparent; font-weight: inherit; }
+.penetration-table tbody tr:first-child { background: #303b62; color: #f6f7ff; }
+.penetration-table th { white-space: normal; }
+.penetration-table tbody tr:first-child td {
+  color: #d5dcff;
+  font-family: "Inter Metrics", system-ui, sans-serif;
+  font-size: clamp(1.125rem, 2.3vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -.025em;
+}
+.penetration-table td span { font-size: .64em; font-weight: 500; letter-spacing: 0; }
 .experiment-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
 .experiment-image { display: grid; place-items: center; background: #fff; border-radius: 15px; overflow: hidden; }
 .experiment-image img { height: auto; aspect-ratio: 3 / 2; object-fit: contain; }
@@ -248,6 +277,7 @@ tbody tr:last-child { color: var(--accent-dark); background: #edf0ff; font-weigh
   .nav { gap: 21px; }
   .stats div { padding-inline: 22px; }
   .method-grid article { padding: 17px; }
+  .penetration { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 660px) {
