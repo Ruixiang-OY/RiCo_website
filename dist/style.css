@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Inter Metrics";
+  src: url("assets/inter-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
 :root {
   color-scheme: light;
   --ink: #161b2e;
@@ -152,12 +160,21 @@ figcaption strong { color: var(--ink); font-weight: 650; }
 figcaption a { font-weight: 560; }
 
 .findings { margin-top: 60px; background: var(--paper); border-block: 1px solid #e5e9f5; }
-.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding-block: 40px; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding-block: 40px; font-family: "Inter Metrics", system-ui, sans-serif; }
 .stats div { display: grid; padding-inline: 34px; border-inline-start: 1px solid #d8deef; }
 .stats div:first-child { padding-inline-start: 0; border: 0; }
-.stats .stat-value { grid-row: 1; color: var(--accent); font-size: clamp(1.75rem, 4vw, 3.5rem); line-height: 1.07; letter-spacing: -.075em; font-weight: 650; white-space: nowrap; }
-.stat-value span { font-size: .59em; }
-.stats dt { margin: 8px 0 3px; font-size: 1rem; font-weight: 650; }
+.stats .stat-value {
+  grid-row: 1;
+  color: var(--accent);
+  font-size: clamp(1.5rem, 3.35vw, 3.25rem);
+  font-weight: 580;
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: -.035em;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+.stat-unit { font-size: .56em; font-weight: 500; letter-spacing: 0; }
+.stats dt { margin: 9px 0 4px; font-size: 1rem; font-weight: 600; }
 .stats .stat-note { font-size: .875rem; color: var(--muted); line-height: 1.45; }
 
 .section { padding-block: clamp(66px, 8.15vw, 110px); }
@@ -249,7 +266,7 @@ tbody tr:last-child { color: var(--accent-dark); background: #edf0ff; font-weigh
   .stats { grid-template-columns: 1fr; padding-block: 12px; }
   .stats div, .stats div:first-child { padding: 14px 0; border: 0; }
   .stats div + div { border-top: 1px solid #d8deef; }
-  .stats .stat-value { font-size: 2.25rem; }
+  .stats .stat-value { font-size: 2.125rem; }
   .method-grid, .experiment-grid, .result-notes { grid-template-columns: 1fr; }
   .framework { padding: 10px; }
   .results-heading { flex-wrap: wrap; }
