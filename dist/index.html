@@ -70,7 +70,7 @@
       </figure>
     </section>
 
-    <section class="findings" aria-label="Key findings">
+    <section class="findings dark-section" aria-label="Key findings">
       <dl class="stats page-width">
         <div><dt>Position RMSE at 50 frames</dt><dd class="stat-value">0.026–0.032 <span class="stat-unit">m</span></dd><dd class="stat-note">MOVi benchmark</dd></div>
         <div><dt>Rotation RMSE at 50 frames</dt><dd class="stat-value">2.59–2.86°</dd><dd class="stat-note">MOVi benchmark</dd></div>
@@ -78,24 +78,26 @@
       </dl>
     </section>
 
-    <section class="section page-width" id="method">
-      <div class="section-heading">
-        <p class="eyebrow">Method</p>
-        <h2>From surface contacts to rigid motion</h2>
-        <p class="lede">RiCo takes two consecutive scene states as input. It searches for nearby surfaces, combines the resulting contact information within each body, and predicts the next scene state.</p>
+    <section class="section" id="method">
+      <div class="page-width">
+        <div class="section-heading">
+          <p class="eyebrow">Method</p>
+          <h2>From surface contacts to rigid motion</h2>
+          <p class="lede">RiCo takes two consecutive scene states as input. It searches for nearby surfaces, combines the resulting contact information within each body, and predicts the next scene state.</p>
+        </div>
+        <div class="method-grid">
+          <article><h3>Sparse contact neighborhoods</h3><p>For each surface point, RiCo keeps nearby candidates from other objects and the environment. Their relative geometry, motion and physical properties describe each potential interaction.</p></article>
+          <article><h3>Intra-object reasoning</h3><p>A shared point Transformer lets points within the same object exchange contact information so that the model can combine the effects of simultaneous contacts.</p></article>
+          <article><h3>Anchor-based prediction</h3><p>The decoder predicts displacements at selected surface anchors. Rigid alignment recovers the translation and rotation for the entire body.</p></article>
+        </div>
+        <figure class="framework">
+          <a href="assets/framework.webp"><img src="assets/framework.webp" alt="RiCo architecture, showing surface input states, local contact construction, intra-object reasoning and anchor-based rigid motion prediction." width="1850" height="876" loading="lazy"></a>
+          <figcaption>RiCo’s prediction pipeline. <a href="https://arxiv.org/html/2610.12333v1#S3">Read the method in the paper</a></figcaption>
+        </figure>
       </div>
-      <div class="method-grid">
-        <article><h3>Sparse contact neighborhoods</h3><p>For each surface point, RiCo keeps nearby candidates from other objects and the environment. Their relative geometry, motion and physical properties describe each potential interaction.</p></article>
-        <article><h3>Intra-object reasoning</h3><p>A shared point Transformer lets points within the same object exchange contact information so that the model can combine the effects of simultaneous contacts.</p></article>
-        <article><h3>Anchor-based prediction</h3><p>The decoder predicts displacements at selected surface anchors. Rigid alignment recovers the translation and rotation for the entire body.</p></article>
-      </div>
-      <figure class="framework">
-        <a href="assets/framework.webp"><img src="assets/framework.webp" alt="RiCo architecture, showing surface input states, local contact construction, intra-object reasoning and anchor-based rigid motion prediction." width="1850" height="876" loading="lazy"></a>
-        <figcaption>RiCo’s prediction pipeline. <a href="https://arxiv.org/html/2610.12333v1#S3">Read the method in the paper</a></figcaption>
-      </figure>
     </section>
 
-    <section class="section penetration-section" id="penetration" aria-labelledby="penetration-title">
+    <section class="section dark-section" id="penetration" aria-labelledby="penetration-title">
       <div class="page-width">
         <div class="section-heading">
           <p class="eyebrow">Contact fidelity · MOVi-B</p>
@@ -118,7 +120,7 @@
       </div>
     </section>
 
-    <section class="section experiments" id="experiments">
+    <section class="section" id="experiments">
       <div class="page-width">
         <div class="section-heading">
           <p class="eyebrow">Experiments</p>
@@ -140,7 +142,7 @@
       </div>
     </section>
 
-    <section class="section results" id="results">
+    <section class="section dark-section" id="results">
       <div class="page-width">
         <div class="section-heading">
           <p class="eyebrow">Quantitative results</p>
@@ -178,8 +180,8 @@
       </div>
     </section>
 
-    <section class="section page-width citation-section" id="citation">
-      <div class="citation">
+    <section class="section" id="citation">
+      <div class="citation page-width">
         <div class="citation-head"><h2>Citation</h2><button class="button button-outline" type="button" id="copy-bibtex">Copy BibTeX</button></div>
         <pre><code id="bibtex">@misc{ouyang2026rico,
   title = {RiCo: Neural Simulation of Rigid-Body Interactions via Local Contact Reasoning},
