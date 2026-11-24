@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7fc">
+  <meta name="description" content="RiCo is a neural simulator that predicts rigid-body motion by reasoning about local surface contacts.">
+  <meta property="og:title" content="RiCo · Neural Simulation of Rigid-Body Interactions">
+  <meta property="og:description" content="Rigid-body Contact Reasoning, an arXiv research preprint.">
+  <meta property="og:type" content="website">
+  <title>RiCo · Rigid-body Contact Reasoning</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav page-width" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="RiCo home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span>RiCo</span>
+      </a>
+      <div class="nav-links">
+        <a href="#method">Method</a>
+        <a href="#experiments">Experiments</a>
+        <a href="#results">Results</a>
+        <a href="#citation">Citation</a>
+      </div>
+      <a class="button button-primary nav-demo" href="#demo">Watch demo</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="paper-title">
+      <div class="hero-text page-width">
+        <a class="preprint" href="https://arxiv.org/abs/2610.12333">arXiv preprint <span></span> October 2026</a>
+        <h1 id="paper-title"><strong>RiCo</strong><span>Neural Simulation of Rigid-Body<br class="desktop-break"> Interactions via Local Contact Reasoning</span></h1>
+        <p class="authors">
+          <span>Ruixiang Ouyang<sup>1,2</sup></span>
+          <span><a href="https://qiaoguanren.github.io/">Guanren Qiao</a><sup>1</sup></span>
+          <span>Fansen Meng<sup>3</sup></span>
+          <span><a href="https://yuecideng.github.io/">Yueci Deng</a><sup>1,2</sup></span>
+          <span>Ruixing Jin<sup>1</sup></span>
+          <span>Kui Jia<sup>1,2</sup></span>
+          <span><a href="https://guiliang.me/">Guiliang Liu</a><sup>1,4,†</sup></span>
+        </p>
+        <p class="affiliations">
+          <span><sup>1</sup> The Chinese University of Hong Kong, Shenzhen</span>
+          <span><sup>2</sup> DexForce Co., Ltd.</span>
+          <span><sup>3</sup> South China University of Technology</span>
+          <span><sup>4</sup> Shenzhen Loop Area Institute</span>
+          <span><sup>†</sup> Corresponding author</span>
+        </p>
+        <div class="paper-actions">
+          <a class="button button-primary" href="https://arxiv.org/pdf/2610.12333">Paper PDF</a>
+          <a class="button button-outline" href="https://arxiv.org/abs/2610.12333">arXiv</a>
+        </div>
+        <details class="abstract">
+          <summary>Abstract</summary>
+          <p>When rigid bodies collide, the motion of each object changes in response to contact between nearby surfaces. RiCo learns those interactions directly from sampled surface points. It builds sparse contact neighborhoods, combines local geometry and motion with physical properties, and uses a point Transformer to integrate the effects of multiple contacts within each object. A decoder predicts how a few anchor points move, then recovers a rigid transformation for the whole object.</p>
+          <p>On MOVi-A and MOVi-B, RiCo reduces 100-frame position error by 31–35% and orientation error by about 38% relative to the strongest baseline. The model also runs zero-shot on scenes with 270 objects. Multi-ball billiard experiments provide preliminary evidence of transfer from simulation to real-world dynamics.</p>
+        </details>
+      </div>
+      <figure class="demo page-width" id="demo">
+        <video controls playsinline preload="metadata" poster="assets/demo-poster.webp" aria-label="MOVi-A demonstration placeholder">
+          <source src="assets/demo-5.mp4" type="video/mp4">
+          <a href="assets/demo-5.mp4">Open the MOVi-A clip</a>
+        </video>
+        <figcaption><span><strong>MOVi-A sample clip</strong> <span class="caption-dot">·</span> Temporary overview video</span><a href="assets/demo-5.mp4" download>Download MP4</a></figcaption>
+      </figure>
+    </section>
+
+    <section class="findings" aria-label="Key findings">
+      <dl class="stats page-width">
+        <div><dt>Lower position error</dt><dd class="stat-value">31–35<span>%</span></dd><dd class="stat-note">100-frame predictions on MOVi-A and MOVi-B</dd></div>
+        <div><dt>Lower orientation error</dt><dd class="stat-value">~38<span>%</span></dd><dd class="stat-note">100-frame predictions on MOVi-A and MOVi-B</dd></div>
+        <div><dt>Objects in zero-shot tests</dt><dd class="stat-value">270</dd><dd class="stat-note">Training scenes contained 3–10 objects</dd></div>
+      </dl>
+    </section>
+
+    <section class="section page-width" id="method">
+      <div class="section-heading">
+        <p class="eyebrow">Method</p>
+        <h2>From surface contacts to rigid motion</h2>
+        <p class="lede">RiCo takes two consecutive scene states as input. It searches for nearby surfaces, combines the resulting contact information within each body, and predicts the next scene state.</p>
+      </div>
+      <div class="method-grid">
+        <article><h3>Sparse contact neighborhoods</h3><p>For each surface point, RiCo keeps nearby candidates from other objects and the environment. Their relative geometry, motion and physical properties describe each potential interaction.</p></article>
+        <article><h3>Intra-object reasoning</h3><p>A shared point Transformer lets points within the same object exchange contact information so that the model can combine the effects of simultaneous contacts.</p></article>
+        <article><h3>Anchor-based prediction</h3><p>The decoder predicts displacements at selected surface anchors. Rigid alignment recovers the translation and rotation for the entire body.</p></article>
+      </div>
+      <figure class="framework">
+        <a href="assets/framework.webp"><img src="assets/framework.webp" alt="RiCo architecture, showing surface input states, local contact construction, intra-object reasoning and anchor-based rigid motion prediction." width="1850" height="876" loading="lazy"></a>
+        <figcaption>RiCo’s prediction pipeline. <a href="https://arxiv.org/html/2610.12333v1#S3">Read the method in the paper</a></figcaption>
+      </figure>
+    </section>
+
+    <section class="section experiments" id="experiments">
+      <div class="page-width">
+        <div class="section-heading">
+          <p class="eyebrow">Experiments</p>
+          <h2>Scaling up and transferring to real collisions</h2>
+          <p class="lede">The paper tests RiCo on larger simulated scenes and on multi-ball collisions recorded on a billiard table.</p>
+        </div>
+        <div class="experiment-grid">
+          <article>
+            <a class="experiment-image" href="assets/scale.webp"><img src="assets/scale.webp" alt="Rollouts for large scenes containing spheres, spots and knots." width="1850" height="1400" loading="lazy"></a>
+            <h3>Zero-shot scaling</h3>
+            <p>A model trained on MOVi-B scenes with 3–10 objects was evaluated on three scenes with 270 objects each. Prediction error grew over longer rollouts.</p>
+          </article>
+          <article>
+            <a class="experiment-image" href="assets/real-world.webp"><img src="assets/real-world.webp" alt="Real billiard-table setup and corresponding simulated scene." width="1850" height="1301" loading="lazy"></a>
+            <h3>Multi-ball sim-to-real</h3>
+            <p>RiCo was trained on simulated collisions and evaluated on five real billiard sessions. The physics-engine reference had lower trajectory error in these tests.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section results" id="results">
+      <div class="page-width">
+        <div class="section-heading">
+          <p class="eyebrow">Quantitative results</p>
+          <h2>Tracking motion over time</h2>
+          <p class="lede">Compare RiCo with RigidFormer and HopNet across three MOVi benchmarks and three prediction horizons.</p>
+        </div>
+        <div class="results-panel">
+          <div class="results-heading">
+            <h3>Motion prediction error</h3>
+            <label>Benchmark
+              <select id="benchmark">
+                <option value="a">MOVi-A</option>
+                <option value="b">MOVi-B</option>
+                <option value="sphere">MOVi-Sphere</option>
+              </select>
+            </label>
+          </div>
+          <div class="table-wrap" tabindex="0" aria-label="Motion prediction results">
+            <table>
+              <caption id="results-caption" aria-live="polite">MOVi-A · Position RMSE (m) / orientation RMSE (°)</caption>
+              <thead><tr><th scope="col">Model</th><th scope="col">50 frames</th><th scope="col">75 frames</th><th scope="col">100 frames</th></tr></thead>
+              <tbody id="result-rows">
+                <tr><th scope="row">HopNet</th><td>0.054 / 5.64</td><td>0.115 / 11.84</td><td>0.196 / 18.83</td></tr>
+                <tr><th scope="row">RigidFormer</th><td>0.049 / 5.06</td><td>0.103 / 10.90</td><td>0.177 / 18.32</td></tr>
+                <tr><th scope="row">RiCo</th><td>0.031 / 2.86</td><td>0.067 / 6.49</td><td>0.115 / 11.40</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">Lower is better for both metrics. <a href="https://arxiv.org/html/2610.12333v1#S4">See all baselines and evaluation details</a></p>
+        </div>
+        <div class="result-notes">
+          <article><h3>Contact fidelity</h3><p>On MOVi-B, RiCo’s penetration-time ratio and mean penetration depth differ from ground truth by 11.0 percentage points and 2.22 mm, respectively.</p></article>
+          <article><h3>Scope</h3><p>RiCo models passive rigid bodies. The paper leaves deformable objects and actuated systems for future work.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section page-width citation-section" id="citation">
+      <div class="citation">
+        <div class="citation-head"><h2>Citation</h2><button class="button button-outline" type="button" id="copy-bibtex">Copy BibTeX</button></div>
+        <pre><code id="bibtex">@misc{ouyang2026rico,
+  title = {RiCo: Neural Simulation of Rigid-Body Interactions via Local Contact Reasoning},
+  author = {Ouyang, Ruixiang and Qiao, Guanren and Meng, Fansen and Deng, Yueci and Jin, Ruixing and Jia, Kui and Liu, Guiliang},
+  year = {2026},
+  eprint = {2610.12333},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.CV},
+  url = {https://arxiv.org/abs/2610.12333}
+}</code></pre>
+        <p class="copy-status" role="status" id="copy-status"></p>
+      </div>
+    </section>
+  </main>
+  <footer class="page-width footer">
+    <a href="#top" class="brand">RiCo</a>
+    <a href="https://arxiv.org/abs/2610.12333">arXiv:2610.12333</a>
+  </footer>
+</body>
+</html>
