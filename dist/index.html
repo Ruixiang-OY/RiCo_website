@@ -297,29 +297,242 @@
       </div>
     </section>
 
-    <section class="section tinted-section" id="experiments">
+    <section class="section tinted-section" id="scaling" aria-labelledby="scaling-title">
       <div class="page-width">
-        <div class="section-heading">
-          <p class="eyebrow">Experiments</p>
-          <h2>Scaling up and transferring to real collisions</h2>
-          <p class="lede">The paper tests RiCo on larger simulated scenes and on multi-ball collisions recorded on a billiard table.</p>
+        <div class="section-heading" id="experiments">
+          <p class="eyebrow">Scaling</p>
+          <h2 id="scaling-title">Zero-shot scaling</h2>
+          <p class="lede">RiCo was trained on MOVi-B scenes with 3–10 objects and evaluated on three scenes with 270 objects each. Prediction error grew over longer rollouts.</p>
         </div>
-        <div class="experiment-grid">
-          <article>
-            <a class="experiment-image" href="assets/scale.webp"><img src="assets/scale.webp" alt="Rollouts for large scenes containing spheres, spots and knots." width="1850" height="1400" loading="lazy"></a>
-            <h3>Zero-shot scaling</h3>
-            <p>A model trained on MOVi-B scenes with 3–10 objects was evaluated on three scenes with 270 objects each. Prediction error grew over longer rollouts.</p>
-          </article>
-          <article>
-            <a class="experiment-image" href="assets/real-world.webp"><img src="assets/real-world.webp" alt="Real billiard-table setup and corresponding simulated scene." width="1850" height="1301" loading="lazy"></a>
-            <h3>Multi-ball sim-to-real</h3>
-            <p>RiCo was trained on simulated collisions and evaluated on five real billiard sessions. The physics-engine reference had lower trajectory error in these tests.</p>
-          </article>
+        <div class="video-grid">
+          <figure class="video-card">
+            <video controls playsinline preload="none" poster="assets/scaling/demo-15-0.webp" aria-label="Rollout 15-0">
+              <source src="assets/scaling/demo-15-0.mp4" type="video/mp4">
+              <a href="assets/scaling/demo-15-0.mp4">Open Rollout 15-0</a>
+            </video>
+            <figcaption>Rollout 15-0</figcaption>
+          </figure>
+          <figure class="video-card">
+            <video controls playsinline preload="none" poster="assets/scaling/demo-15-1.webp" aria-label="Rollout 15-1">
+              <source src="assets/scaling/demo-15-1.mp4" type="video/mp4">
+              <a href="assets/scaling/demo-15-1.mp4">Open Rollout 15-1</a>
+            </video>
+            <figcaption>Rollout 15-1</figcaption>
+          </figure>
+          <figure class="video-card">
+            <video controls playsinline preload="none" poster="assets/scaling/demo-15-2.webp" aria-label="Rollout 15-2">
+              <source src="assets/scaling/demo-15-2.mp4" type="video/mp4">
+              <a href="assets/scaling/demo-15-2.mp4">Open Rollout 15-2</a>
+            </video>
+            <figcaption>Rollout 15-2</figcaption>
+          </figure>
+          <figure class="video-card">
+            <video controls playsinline preload="none" poster="assets/scaling/demo-15-3.webp" aria-label="Rollout 15-3">
+              <source src="assets/scaling/demo-15-3.mp4" type="video/mp4">
+              <a href="assets/scaling/demo-15-3.mp4">Open Rollout 15-3</a>
+            </video>
+            <figcaption>Rollout 15-3</figcaption>
+          </figure>
+          <figure class="video-card">
+            <video controls playsinline preload="none" poster="assets/scaling/demo-15-5.webp" aria-label="Rollout 15-5">
+              <source src="assets/scaling/demo-15-5.mp4" type="video/mp4">
+              <a href="assets/scaling/demo-15-5.mp4">Open Rollout 15-5</a>
+            </video>
+            <figcaption>Rollout 15-5</figcaption>
+          </figure>
+          <figure class="video-card">
+            <video controls playsinline preload="none" poster="assets/scaling/demo-20-0.webp" aria-label="Rollout 20-0">
+              <source src="assets/scaling/demo-20-0.mp4" type="video/mp4">
+              <a href="assets/scaling/demo-20-0.mp4">Open Rollout 20-0</a>
+            </video>
+            <figcaption>Rollout 20-0</figcaption>
+          </figure>
+          <figure class="video-card">
+            <video controls playsinline preload="none" poster="assets/scaling/demo-20-1.webp" aria-label="Rollout 20-1">
+              <source src="assets/scaling/demo-20-1.mp4" type="video/mp4">
+              <a href="assets/scaling/demo-20-1.mp4">Open Rollout 20-1</a>
+            </video>
+            <figcaption>Rollout 20-1</figcaption>
+          </figure>
+          <figure class="video-card">
+            <video controls playsinline preload="none" poster="assets/scaling/demo-20-2.webp" aria-label="Rollout 20-2">
+              <source src="assets/scaling/demo-20-2.mp4" type="video/mp4">
+              <a href="assets/scaling/demo-20-2.mp4">Open Rollout 20-2</a>
+            </video>
+            <figcaption>Rollout 20-2</figcaption>
+          </figure>
+          <figure class="video-card">
+            <video controls playsinline preload="none" poster="assets/scaling/demo-20-3.webp" aria-label="Rollout 20-3">
+              <source src="assets/scaling/demo-20-3.mp4" type="video/mp4">
+              <a href="assets/scaling/demo-20-3.mp4">Open Rollout 20-3</a>
+            </video>
+            <figcaption>Rollout 20-3</figcaption>
+          </figure>
+          <figure class="video-card">
+            <video controls playsinline preload="none" poster="assets/scaling/demo-20-5.webp" aria-label="Rollout 20-5">
+              <source src="assets/scaling/demo-20-5.mp4" type="video/mp4">
+              <a href="assets/scaling/demo-20-5.mp4">Open Rollout 20-5</a>
+            </video>
+            <figcaption>Rollout 20-5</figcaption>
+          </figure>
         </div>
+        <details class="experiment-figure">
+          <summary>Paper figure</summary>
+          <a class="experiment-image" href="assets/scale.webp"><img src="assets/scale.webp" alt="Paper rollouts for large scenes with spheres, spots and knots." width="1850" height="1400" loading="lazy"></a>
+        </details>
       </div>
     </section>
 
-    <section class="section" id="results">
+    <section class="section" id="transfer" aria-labelledby="transfer-title">
+      <div class="page-width">
+        <div class="section-heading">
+          <p class="eyebrow">Transfer</p>
+          <h2 id="transfer-title">Multi-ball sim-to-real transfer</h2>
+          <p class="lede">Simulated predictions and real camera recordings are paired by trial. The paper evaluated RiCo on five real billiard sessions after training on simulated collisions.</p>
+        </div>
+        <div class="transfer-grid">
+          <article class="transfer-pair">
+            <h3>Trial 3-0</h3>
+            <div class="pair-videos">
+              <figure class="video-card">
+                <video controls playsinline preload="none" poster="assets/transfer/demo_3-0.webp" aria-label="Trial 3-0 simulated prediction">
+                  <source src="assets/transfer/demo_3-0.mp4" type="video/mp4">
+                  <a href="assets/transfer/demo_3-0.mp4">Open Trial 3-0 simulated prediction</a>
+                </video>
+                <figcaption>Sim</figcaption>
+              </figure>
+              <figure class="video-card">
+                <video controls playsinline preload="none" poster="assets/transfer/rgb_3-0.webp" aria-label="Trial 3-0 real camera recording">
+                  <source src="assets/transfer/rgb_3-0.mp4" type="video/mp4">
+                  <a href="assets/transfer/rgb_3-0.mp4">Open Trial 3-0 real camera recording</a>
+                </video>
+                <figcaption>Real</figcaption>
+              </figure>
+            </div>
+          </article>
+          <article class="transfer-pair">
+            <h3>Trial 3-1</h3>
+            <div class="pair-videos">
+              <figure class="video-card">
+                <video controls playsinline preload="none" poster="assets/transfer/demo_3-1.webp" aria-label="Trial 3-1 simulated prediction">
+                  <source src="assets/transfer/demo_3-1.mp4" type="video/mp4">
+                  <a href="assets/transfer/demo_3-1.mp4">Open Trial 3-1 simulated prediction</a>
+                </video>
+                <figcaption>Sim</figcaption>
+              </figure>
+              <figure class="video-card">
+                <video controls playsinline preload="none" poster="assets/transfer/rgb_3-1.webp" aria-label="Trial 3-1 real camera recording">
+                  <source src="assets/transfer/rgb_3-1.mp4" type="video/mp4">
+                  <a href="assets/transfer/rgb_3-1.mp4">Open Trial 3-1 real camera recording</a>
+                </video>
+                <figcaption>Real</figcaption>
+              </figure>
+            </div>
+          </article>
+          <article class="transfer-pair">
+            <h3>Trial 3-2</h3>
+            <div class="pair-videos">
+              <figure class="video-card">
+                <video controls playsinline preload="none" poster="assets/transfer/demo_3-2.webp" aria-label="Trial 3-2 simulated prediction">
+                  <source src="assets/transfer/demo_3-2.mp4" type="video/mp4">
+                  <a href="assets/transfer/demo_3-2.mp4">Open Trial 3-2 simulated prediction</a>
+                </video>
+                <figcaption>Sim</figcaption>
+              </figure>
+              <figure class="video-card">
+                <video controls playsinline preload="none" poster="assets/transfer/rgb_3-2.webp" aria-label="Trial 3-2 real camera recording">
+                  <source src="assets/transfer/rgb_3-2.mp4" type="video/mp4">
+                  <a href="assets/transfer/rgb_3-2.mp4">Open Trial 3-2 real camera recording</a>
+                </video>
+                <figcaption>Real</figcaption>
+              </figure>
+            </div>
+          </article>
+          <article class="transfer-pair">
+            <h3>Trial 3-3</h3>
+            <div class="pair-videos">
+              <figure class="video-card">
+                <video controls playsinline preload="none" poster="assets/transfer/demo_3-3.webp" aria-label="Trial 3-3 simulated prediction">
+                  <source src="assets/transfer/demo_3-3.mp4" type="video/mp4">
+                  <a href="assets/transfer/demo_3-3.mp4">Open Trial 3-3 simulated prediction</a>
+                </video>
+                <figcaption>Sim</figcaption>
+              </figure>
+              <figure class="video-card">
+                <video controls playsinline preload="none" poster="assets/transfer/rgb_3-3.webp" aria-label="Trial 3-3 real camera recording">
+                  <source src="assets/transfer/rgb_3-3.mp4" type="video/mp4">
+                  <a href="assets/transfer/rgb_3-3.mp4">Open Trial 3-3 real camera recording</a>
+                </video>
+                <figcaption>Real</figcaption>
+              </figure>
+            </div>
+          </article>
+          <article class="transfer-pair">
+            <h3>Trial 4-1</h3>
+            <div class="pair-videos">
+              <figure class="video-card">
+                <video controls playsinline preload="none" poster="assets/transfer/demo_4-1.webp" aria-label="Trial 4-1 simulated prediction">
+                  <source src="assets/transfer/demo_4-1.mp4" type="video/mp4">
+                  <a href="assets/transfer/demo_4-1.mp4">Open Trial 4-1 simulated prediction</a>
+                </video>
+                <figcaption>Sim</figcaption>
+              </figure>
+              <figure class="video-card">
+                <video controls playsinline preload="none" poster="assets/transfer/rgb_4-1.webp" aria-label="Trial 4-1 real camera recording">
+                  <source src="assets/transfer/rgb_4-1.mp4" type="video/mp4">
+                  <a href="assets/transfer/rgb_4-1.mp4">Open Trial 4-1 real camera recording</a>
+                </video>
+                <figcaption>Real</figcaption>
+              </figure>
+            </div>
+          </article>
+          <article class="transfer-pair">
+            <h3>Trial 4-2</h3>
+            <div class="pair-videos">
+              <figure class="video-card">
+                <video controls playsinline preload="none" poster="assets/transfer/demo_4-2.webp" aria-label="Trial 4-2 simulated prediction">
+                  <source src="assets/transfer/demo_4-2.mp4" type="video/mp4">
+                  <a href="assets/transfer/demo_4-2.mp4">Open Trial 4-2 simulated prediction</a>
+                </video>
+                <figcaption>Sim</figcaption>
+              </figure>
+              <figure class="video-card">
+                <video controls playsinline preload="none" poster="assets/transfer/rgb_4-2.webp" aria-label="Trial 4-2 real camera recording">
+                  <source src="assets/transfer/rgb_4-2.mp4" type="video/mp4">
+                  <a href="assets/transfer/rgb_4-2.mp4">Open Trial 4-2 real camera recording</a>
+                </video>
+                <figcaption>Real</figcaption>
+              </figure>
+            </div>
+          </article>
+          <article class="transfer-pair">
+            <h3>Trial 4-3</h3>
+            <div class="pair-videos">
+              <figure class="video-card">
+                <video controls playsinline preload="none" poster="assets/transfer/demo_4-3.webp" aria-label="Trial 4-3 simulated prediction">
+                  <source src="assets/transfer/demo_4-3.mp4" type="video/mp4">
+                  <a href="assets/transfer/demo_4-3.mp4">Open Trial 4-3 simulated prediction</a>
+                </video>
+                <figcaption>Sim</figcaption>
+              </figure>
+              <figure class="video-card">
+                <video controls playsinline preload="none" poster="assets/transfer/rgb_4-3.webp" aria-label="Trial 4-3 real camera recording">
+                  <source src="assets/transfer/rgb_4-3.mp4" type="video/mp4">
+                  <a href="assets/transfer/rgb_4-3.mp4">Open Trial 4-3 real camera recording</a>
+                </video>
+                <figcaption>Real</figcaption>
+              </figure>
+            </div>
+          </article>
+        </div>
+        <details class="experiment-figure">
+          <summary>Paper figure</summary>
+          <a class="experiment-image" href="assets/real-world.webp"><img src="assets/real-world.webp" alt="Paper comparison of the real billiard-table setup and the simulated scene." width="1850" height="1301" loading="lazy"></a>
+        </details>
+      </div>
+    </section>
+
+    <section class="section tinted-section" id="results">
       <div class="page-width">
         <div class="section-heading">
           <p class="eyebrow">Quantitative results</p>
@@ -357,7 +570,7 @@
       </div>
     </section>
 
-    <section class="section tinted-section" id="citation">
+    <section class="section" id="citation">
       <div class="citation page-width">
         <div class="citation-head"><h2>Citation</h2><button class="button button-outline" type="button" id="copy-bibtex">Copy BibTeX</button></div>
         <pre><code id="bibtex">@misc{ouyang2026rico,

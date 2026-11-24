@@ -196,7 +196,7 @@ h3 { font-size: clamp(1.18rem, 1.95vw, 1.48rem); line-height: 1.2; letter-spacin
 .method-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 17px; }
 .method-grid article { padding: 24px; border: 1px solid var(--line); border-radius: 15px; background: #fafbff; }
 .method-grid h3::before { display: block; width: 24px; height: 3px; margin-bottom: 17px; border-radius: 8px; background: #7181e0; content: ""; }
-.method-grid p, .experiment-grid p, .result-notes p { margin-top: 12px; font-size: 1rem; color: var(--body); line-height: 1.65; }
+.method-grid p, .result-notes p { margin-top: 12px; font-size: 1rem; color: var(--body); line-height: 1.65; }
 .framework { margin-top: 30px; padding: 22px; border: 1px solid var(--line); border-radius: 17px; }
 .framework img { height: auto; }
 
@@ -230,10 +230,11 @@ h3 { font-size: clamp(1.18rem, 1.95vw, 1.48rem); line-height: 1.2; letter-spacin
 .distribution-summary dd { margin-top: 3px; color: var(--ink); font-size: 1.1rem; font-weight: 650; }
 .distribution-summary p { margin-top: 12px; }
 
-.experiment-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.experiment-figure { max-width: 760px; margin-top: 24px; }
+.experiment-figure summary { width: fit-content; color: var(--accent); font-size: .9375rem; font-weight: 600; cursor: pointer; }
 .experiment-image { display: grid; place-items: center; border: 1px solid var(--line); background: #fff; border-radius: 15px; overflow: hidden; }
-.experiment-image img { height: auto; aspect-ratio: 3 / 2; object-fit: contain; }
-.experiment-grid h3 { margin-top: 17px; }
+.experiment-figure .experiment-image { margin-top: 14px; }
+.experiment-image img { height: auto; }
 
 .movi-group + .movi-group { margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line); }
 .movi-group h3 { margin-bottom: 14px; }
@@ -247,6 +248,9 @@ h3 { font-size: clamp(1.18rem, 1.95vw, 1.48rem); line-height: 1.2; letter-spacin
   object-fit: contain;
 }
 .video-card figcaption { margin-top: 7px; color: var(--muted); font-size: .875rem; }
+.transfer-grid, .pair-videos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.transfer-pair { padding: clamp(14px, 2vw, 23px); border: 1px solid var(--line); border-radius: 15px; }
+.transfer-pair h3 { margin-bottom: 12px; }
 
 .results-panel { border-radius: 17px; padding: clamp(16px, 3vw, 34px); border: 1px solid var(--line); background: var(--surface); }
 .results-heading { display: flex; justify-content: space-between; align-items: center; gap: 10px 24px; }
@@ -274,7 +278,7 @@ tbody tr:last-child { color: var(--accent-dark); background: var(--table-highlig
 .table-note { margin-top: 13px; color: var(--muted); font-size: .875rem; line-height: 1.6; }
 .result-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 34px; }
 
-.citation { max-width: 900px; padding: clamp(20px, 4vw, 34px); border: 1px solid var(--line); border-radius: 17px; background: var(--surface); }
+.citation { max-width: 900px; padding: clamp(20px, 4vw, 34px); border: 1px solid var(--line); border-radius: 17px; background: var(--paper); }
 .citation-head { display: flex; gap: 16px; justify-content: space-between; align-items: center; }
 .citation-head h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
 .citation pre { margin: 20px 0 0; overflow-x: auto; color: var(--body); font-size: .875rem; line-height: 1.65; }
@@ -289,6 +293,7 @@ tbody tr:last-child { color: var(--accent-dark); background: var(--table-highlig
   .stats div { padding-inline: 22px; }
   .method-grid article { padding: 17px; }
   .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .transfer-grid { grid-template-columns: 1fr; }
   .distribution-figure { grid-template-columns: 1fr; }
   .distribution-summary { padding: 12px 0 0; border-inline-start: 0; border-top: 1px solid var(--line); }
   .distribution-summary dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -311,14 +316,14 @@ tbody tr:last-child { color: var(--accent-dark); background: var(--table-highlig
   .stats div, .stats div:first-child { padding: 14px 0; border: 0; }
   .stats div + div { border-top: 1px solid var(--line); }
   .stats .stat-value { font-size: 2.125rem; }
-  .method-grid, .experiment-grid, .result-notes { grid-template-columns: 1fr; }
+  .method-grid, .result-notes { grid-template-columns: 1fr; }
   .framework { padding: 10px; }
   .results-heading { flex-wrap: wrap; }
   td, th { padding: 10px 8px; }
 }
 
 @media (max-width: 480px) {
-  .video-grid { grid-template-columns: 1fr; }
+  .video-grid, .pair-videos { grid-template-columns: 1fr; }
   .penetration-table :is(th, td) { padding-inline: 6px; }
 }
 
