@@ -246,8 +246,53 @@
               <tr><th scope="row">Unsigned distance</th><td>23.6 pp</td><td>7.86 mm</td></tr>
             </tbody>
           </table>
-          <p class="table-note"><a href="https://arxiv.org/html/2610.12333v1#S4.SS3">Read the contact fidelity experiment</a></p>
         </div>
+        <section class="results-panel distribution-panel" id="penetration-distribution" aria-labelledby="mpd-title">
+          <div class="results-heading distribution-heading">
+            <h3 id="mpd-title">Per-sequence MPD distribution</h3>
+            <div class="distribution-controls" hidden>
+              <label>Model
+                <select id="mpd-model">
+                  <option value="rico" selected>RiCo</option>
+                  <option value="hopnet">HOPNet</option>
+                  <option value="rigidformer">RigidFormer</option>
+                </select>
+              </label>
+              <label>Contact type
+                <select id="mpd-contact">
+                  <option value="overall" selected>Overall</option>
+                  <option value="object_object">Object–object</option>
+                  <option value="object_ground">Object–ground</option>
+                </select>
+              </label>
+            </div>
+          </div>
+          <p class="distribution-description">Each MOVi-B test sequence contributes one mean penetration depth. The histogram shows sequences with a penetration event.</p>
+          <figure class="distribution-figure">
+            <picture>
+              <source id="mpd-chart-narrow" media="(max-width: 600px)" srcset="assets/penetration/rico-overall-narrow.png" width="640" height="408">
+              <img id="mpd-chart" src="assets/penetration/rico-overall.png" alt="RiCo overall MPD histogram for 120 MOVi-B test sequences with penetration" width="1152" height="528" loading="lazy">
+            </picture>
+            <figcaption class="distribution-summary" aria-live="polite">
+              <dl>
+                <div><dt>Median MPD</dt><dd id="mpd-median">4.67 mm</dd></div>
+                <div><dt>Interquartile range</dt><dd id="mpd-iqr">3.73–6.59 mm</dd></div>
+                <div><dt>90th percentile</dt><dd id="mpd-p90">8.57 mm</dd></div>
+                <div><dt>With / without penetration</dt><dd id="mpd-events">120 / 0</dd></div>
+              </dl>
+              <p id="mpd-coverage">120 of 120 test sequences evaluated.</p>
+            </figcaption>
+          </figure>
+          <script type="application/json" id="mpd-data">
+          {
+            "total": 120,
+            "models": {
+              "hopnet": {"overall": {"evaluated": 120, "withEvent": 120, "quantiles": [200.42936131358147, 261.2849175930023, 359.5050573348999, 497.5497514009476]}, "object_object": {"evaluated": 120, "withEvent": 102, "quantiles": [30.747218523174524, 57.34569765627384, 108.15325565636158, 167.58148819208145]}, "object_ground": {"evaluated": 120, "withEvent": 120, "quantiles": [204.0354423224926, 272.5491523742676, 370.8716481924057, 505.7199478149415]}},
+              "rico": {"overall": {"evaluated": 120, "withEvent": 120, "quantiles": [3.7344268057495356, 4.6749364119023085, 6.590714096091688, 8.573648240417242]}, "object_object": {"evaluated": 120, "withEvent": 102, "quantiles": [5.504785571247339, 8.557302877306938, 15.411769971251488, 23.664208874106414]}, "object_ground": {"evaluated": 120, "withEvent": 120, "quantiles": [3.1930427066981792, 3.9586187340319157, 4.910818301141262, 6.3185788225382575]}},
+              "rigidformer": {"overall": {"evaluated": 116, "withEvent": 116, "quantiles": [8.798298658803105, 20.83754353225231, 57.3071613907814, 105.93536496162415]}, "object_object": {"evaluated": 116, "withEvent": 101, "quantiles": [32.8511968255043, 90.69820493459702, 158.1563800573349, 223.52732717990875]}, "object_ground": {"evaluated": 116, "withEvent": 116, "quantiles": [6.929751834832132, 7.763859117403626, 8.52273334749043, 9.327385108917952]}}
+            }
+          }</script>
+        </section>
       </div>
     </section>
 

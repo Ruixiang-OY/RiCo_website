@@ -33,6 +33,41 @@ function updateResults() {
 select.addEventListener('change', updateResults);
 updateResults();
 
+const mpdData = document.querySelector('#mpd-data');
+if (mpdData) {
+  const { models, total } = JSON.parse(mpdData.textContent);
+  const model = document.querySelector('#mpd-model');
+  const contact = document.querySelector('#mpd-contact');
+  const chart = document.querySelector('#mpd-chart');
+  const narrowChart = document.querySelector('#mpd-chart-narrow');
+  const median = document.querySelector('#mpd-median');
+  const iqr = document.querySelector('#mpd-iqr');
+  const p90 = document.querySelector('#mpd-p90');
+  const events = document.querySelector('#mpd-events');
+  const coverage = document.querySelector('#mpd-coverage');
+
+  function updateDistribution() {
+    const { evaluated, withEvent, quantiles } = models[model.value][contact.value];
+    const [lower, middle, upper, percentile90] = quantiles.map(value => value.toFixed(2));
+    const modelName = model.selectedOptions[0].textContent;
+    const contactName = contact.selectedOptions[0].textContent;
+    const assetPath = `assets/penetration/${model.value}-${contact.value}`;
+    narrowChart.srcset = `${assetPath}-narrow.png`;
+    chart.src = `${assetPath}.png`;
+    chart.alt = `${modelName} ${contactName} MPD histogram for ${withEvent} MOVi-B test sequences with penetration`;
+    median.textContent = `${middle} mm`;
+    iqr.textContent = `${lower}–${upper} mm`;
+    p90.textContent = `${percentile90} mm`;
+    events.textContent = `${withEvent} / ${evaluated - withEvent}`;
+    coverage.textContent = `${evaluated} of ${total} test sequences evaluated.`;
+  }
+
+  model.addEventListener('change', updateDistribution);
+  contact.addEventListener('change', updateDistribution);
+  updateDistribution();
+  document.querySelector('.distribution-controls').hidden = false;
+}
+
 const copyButton = document.querySelector('#copy-bibtex');
 const bibtex = document.querySelector('#bibtex');
 const status = document.querySelector('#copy-status');
