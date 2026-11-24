@@ -70,7 +70,7 @@
       </figure>
     </section>
 
-    <section class="findings dark-section" aria-label="Key findings">
+    <section class="findings" aria-label="Key findings">
       <dl class="stats page-width">
         <div><dt>Position RMSE at 50 frames</dt><dd class="stat-value">0.026–0.032 <span class="stat-unit">m</span></dd><dd class="stat-note">MOVi benchmark</dd></div>
         <div><dt>Rotation RMSE at 50 frames</dt><dd class="stat-value">2.59–2.86°</dd><dd class="stat-note">MOVi benchmark</dd></div>
@@ -142,7 +142,36 @@
       </div>
     </section>
 
-    <section class="section dark-section" id="results">
+    <section class="section dark-section" id="visual-results" aria-labelledby="visual-results-title">
+      <div class="page-width">
+        <div class="section-heading">
+          <p class="eyebrow">Qualitative results</p>
+          <h2 id="visual-results-title">MOVi rollout visualizations</h2>
+        </div>
+        <div class="video-grid">
+          <article class="video-card">
+            <h3 id="visual-movi-a">MOVi-A</h3>
+            <video controls playsinline preload="none" poster="assets/movi-a-poster.webp" aria-labelledby="visual-movi-a">
+              <source src="assets/movi-a.mp4" type="video/mp4">
+              <a href="assets/movi-a.mp4">Open the MOVi-A clip</a>
+            </video>
+          </article>
+          <article class="video-card">
+            <h3 id="visual-movi-b">MOVi-B</h3>
+            <video controls playsinline preload="none" poster="assets/movi-b-poster.webp" aria-labelledby="visual-movi-b">
+              <source src="assets/movi-b.mp4" type="video/mp4">
+              <a href="assets/movi-b.mp4">Open the MOVi-B clip</a>
+            </video>
+          </article>
+          <article class="video-card">
+            <h3>MOVi-Sphere</h3>
+            <div class="video-placeholder">Video pending</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="results">
       <div class="page-width">
         <div class="section-heading">
           <p class="eyebrow">Quantitative results</p>
@@ -180,7 +209,7 @@
       </div>
     </section>
 
-    <section class="section" id="citation">
+    <section class="section dark-section" id="citation">
       <div class="citation page-width">
         <div class="citation-head"><h2>Citation</h2><button class="button button-outline" type="button" id="copy-bibtex">Copy BibTeX</button></div>
         <pre><code id="bibtex">@misc{ouyang2026rico,
