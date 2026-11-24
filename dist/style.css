@@ -271,7 +271,7 @@ tbody tr:last-child { color: var(--accent-dark); background: var(--table-highlig
 .copy-status { color: var(--accent-dark); font-size: .875rem; }
 .copy-status:not(:empty) { margin-top: 12px; }
 .footer { padding-block: 26px 34px; border-top: 1px solid var(--line); }
-.footer p { max-width: 760px; margin-inline: auto; text-align: center; color: var(--body); font-size: .9375rem; line-height: 1.65; }
+.footer p { text-align: center; color: var(--body); font-size: .9375rem; line-height: 1.65; }
 
 @media (max-width: 850px) {
   :root { --page: calc(100% - 52px); }
