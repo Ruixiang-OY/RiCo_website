@@ -91,7 +91,7 @@
         </div>
         <figure class="framework">
           <a href="assets/framework.webp"><img src="assets/framework.webp" alt="RiCo architecture, showing surface input states, local contact construction, intra-object reasoning and anchor-based rigid motion prediction." width="1850" height="876" loading="lazy"></a>
-          <figcaption>RiCo’s prediction pipeline. <a href="https://arxiv.org/html/2610.12333v1#S3">Read the method in the paper</a></figcaption>
+          <figcaption><strong>Overview of RiCo.</strong> From two consecutive scene states, RiCo constructs sparse local contact neighborhoods, fuses them with point-wise object states, and performs shared intra-object reasoning with a point transformer. The resulting contact-conditioned features are decoded at a small set of anchors to recover a rigid transformation for each object, and the predicted state is recursively used for autoregressive rollout.</figcaption>
         </figure>
       </div>
     </section>
