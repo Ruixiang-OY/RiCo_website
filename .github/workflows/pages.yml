@@ -7,30 +7,70 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: github-pages
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  package:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      artifact_name: ${{ steps.package.outputs.name }}
+      artifact_id: ${{ steps.upload.outputs.artifact_id }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
         with:
           persist-credentials: false
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
+      - name: Verify the static site
+        id: package
+        run: |
+          test -s dist/index.html
+          echo "name=github-pages-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" >> "$GITHUB_OUTPUT"
       - name: Upload static site
+        id: upload
         uses: actions/upload-pages-artifact@v4
         with:
+          name: ${{ steps.package.outputs.name }}
           path: dist
+          retention-days: 7
+
+  deploy:
+    needs: package
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Wait for the uploaded artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_ID: ${{ needs.package.outputs.artifact_id }}
+          ARTIFACT_NAME: ${{ needs.package.outputs.artifact_name }}
+        run: |
+          if [[ -z "$ARTIFACT_ID" || -z "$ARTIFACT_NAME" ]]; then
+            echo "::error::The upload step did not return an artifact ID and name."
+            exit 1
+          fi
+          for attempt in {1..12}; do
+            if gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts?name=$ARTIFACT_NAME" \
+                --jq '.artifacts[] | select(.expired == false) | .id' | grep -Fxq "$ARTIFACT_ID"; then
+              echo "Artifact $ARTIFACT_NAME ($ARTIFACT_ID) is ready."
+              exit 0
+            fi
+            if [[ "$attempt" != 12 ]]; then sleep 5; fi
+          done
+          echo "::error::Artifact $ARTIFACT_NAME ($ARTIFACT_ID) is still unavailable for this run."
+          exit 1
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
+        with:
+          artifact_name: ${{ needs.package.outputs.artifact_name }}
