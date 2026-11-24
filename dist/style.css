@@ -92,8 +92,6 @@ h1, h2, h3, p, figure, dl, dd { margin: 0; }
 .button-primary:hover { color: #fff; background: var(--accent-dark); }
 .button-outline { border-color: #cbd2e4; color: var(--ink); background: #fff; }
 .button-outline:hover { background: #edf0fd; }
-.dark-section .button-outline { border-color: var(--control-line); background: var(--surface); }
-.dark-section .button-outline:hover { background: var(--table-head); }
 
 .hero {
   padding-top: clamp(52px, 6vw, 86px);
@@ -143,9 +141,9 @@ sup { margin-left: 1px; color: var(--accent-dark); font-size: .68em; font-weight
   aspect-ratio: 16 / 9;
   max-height: 590px;
   object-fit: contain;
-  border: 1px solid #242b41;
+  border: 1px solid var(--line);
   border-radius: 20px;
-  background: #121727;
+  background: var(--paper);
   box-shadow: 0 18px 46px #18203a1c;
 }
 .demo figcaption, .framework figcaption {
@@ -181,21 +179,7 @@ figcaption a { font-weight: 560; }
 .stats .stat-note { font-size: .875rem; color: var(--muted); line-height: 1.45; }
 
 .section { padding-block: clamp(66px, 8.15vw, 110px); background: #fff; }
-.dark-section {
-  color-scheme: dark;
-  --ink: #f1f3f9;
-  --body: #d3d8e5;
-  --muted: #adb6ca;
-  --accent: #aebcff;
-  --accent-dark: #cbd4ff;
-  --line: #383e4c;
-  --surface: #1c2029;
-  --table-head: #242a36;
-  --table-highlight: #2e3754;
-  --control-line: #68758b;
-  color: var(--ink);
-  background: #14161b;
-}
+.tinted-section { background: var(--paper); }
 .section-heading { max-width: 780px; margin-bottom: 34px; }
 .eyebrow {
   margin-bottom: 12px;
@@ -241,7 +225,7 @@ h3 { font-size: clamp(1.18rem, 1.95vw, 1.48rem); line-height: 1.2; letter-spacin
   aspect-ratio: 16 / 9;
   border: 1px solid var(--line);
   border-radius: 13px;
-  background: #090a0d;
+  background: var(--paper);
   object-fit: contain;
 }
 .video-card figcaption { margin-top: 7px; color: var(--muted); font-size: .875rem; }
